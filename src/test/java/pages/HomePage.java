@@ -4,6 +4,7 @@ public class HomePage extends BasePage {
 
     private String usernameLink = "//input[@id='username']";
     private String passwordLink = "//input[@id='password']";
+    private String submitLink = "//button[@id='submit']";
 
     public HomePage() {
         super(driver);
@@ -20,4 +21,12 @@ public class HomePage extends BasePage {
     public void enterPassword(String password) {
         write(passwordLink, password);
     }
-}   
+
+    public void clickSubmit() {
+        clickElement(submitLink);
+    }
+
+    public boolean succesfullyPresent(String text) {
+        return driver.getPageSource().contains(text);
+    }
+} 

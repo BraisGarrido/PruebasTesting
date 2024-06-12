@@ -23,26 +23,31 @@ public class BasePage {
         driver = new ChromeDriver();
     }
 
+    //Ejecucion del driver
     public BasePage (WebDriver driver){
         BasePage.driver = driver;
     }
 
+    //Navegar a la ventana que queramos
     public static void navigateTo(String url) {
         driver.get(url);
     }
 
+    //Una vez terminado todo el proceso cerramos el navegador
     public static void closeBrowser() {
         driver.quit();
     }
 
-    private WebElement Find(String locator){
+    public WebElement Find(String locator){
         return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(locator)));
     }
 
-    private void clickElement(String locator) {
+    //Clickar sobre el elemento que queramos
+    public void clickElement(String locator) {
         Find(locator).click();
     }
 
+    //Escribir sobre el elemento que queramos
     public void write(String locator, String keysToSend) {
         Find(locator).clear();
         Find(locator).sendKeys(keysToSend);
@@ -66,5 +71,15 @@ public class BasePage {
         List<WebElement> dropdownOptions = dropdown.getOptions();
 
         return dropdownOptions.size();
+    }
+
+    //Obtener la url de la ventana actual
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
+    }
+
+    //Comprobar elementos de texto en la ventana
+    public boolean textPresent(String text) {
+        return driver.getPageSource().contains(text);
     }
 }

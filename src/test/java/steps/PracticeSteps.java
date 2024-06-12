@@ -1,5 +1,7 @@
 package steps;
 
+import static org.junit.Assert.assertTrue;
+
 import io.cucumber.java.en.*;
 import pages.HomePage;
 
@@ -19,5 +21,23 @@ public class PracticeSteps {
     @When(value = "I enter the password {string}")
     public void iEnterThePassword(String password) {
         landingPage.enterPassword(password);
+    }
+
+    @And(value = "I push submit button")
+    public void navigationSubmit() {
+        landingPage.clickSubmit();
+    }
+
+    @Then(value = "Verify new page URL contains {string}")
+    public void verifyUrl(String expectedUrl) {
+        String currentUrl = landingPage.getCurrentUrl();
+        assertTrue("The current URL does not contain the expected text",
+                    currentUrl.contains(expectedUrl));
+    }
+
+    @And(value = "Verify new page contains expected text {string}")
+    public void expectedText(String expectedText) {
+        assertTrue("The expected text is not present on the page",
+                    landingPage.succesfullyPresent(expectedText));
     }
 }
