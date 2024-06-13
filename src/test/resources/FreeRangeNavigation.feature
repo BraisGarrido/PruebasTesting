@@ -12,18 +12,25 @@ Feature: Login functionality
             | username | password    | link                                               | text                         |
             | student  | Password123 | practicetestautomation.com/logged-in-successfully/ | You successfully logged in | 
 
-    # Scenario: Negative username test
-    #     Given Open page
-    #     When Type username incorrectUser into username field
-    #     And Type password Password123 into password field
-    #     And Push submit button
-    #     Then Verify error message is displayed
-    #     And Verify error message text is "Your username is invalid!"
+    Scenario Outline: Negative username test
+        Given Open page
+        When I enter the bad username "<badUsername>"
+        And I enter the password "<password>"
+        And I push submit button
+        And Verify error message text is "<text>"
+
+        Examples:
+            | badUsername   | password    | text                      |
+            | incorrectUser | Password123 | Your username is invalid! |
+        
     
-    # Scenario: Negative password test
-    #     Given Open page
-    #     When Type username student into username field
-    #     And Type password incorrectPassword into password field
-    #     And Push submit button
-    #     Then Verify error message is displayed
-    #     And Verify error message text is "Your password is invalid!"
+    Scenario Outline: Negative password test
+        Given Open page
+        When I enter the username "<username>"
+        And I enter the bad password "<badPassword>"
+        And I push submit button
+        And Verify error message text is "<text>"
+
+        Examples:
+            | username | badPassword       | text                      |
+            | student  | incorrectPassword | Your password is invalid! |

@@ -26,7 +26,7 @@ public class HomePage extends BasePage {
         clickElement(submitLink);
     }
 
-    public boolean succesfullyPresent(String text) {
+    public boolean textPresent(String text) {
         return driver.getPageSource().contains(text);
     }
 } 

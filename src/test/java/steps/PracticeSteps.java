@@ -38,6 +38,22 @@ public class PracticeSteps {
     @And(value = "Verify new page contains expected text {string}")
     public void expectedText(String expectedText) {
         assertTrue("The expected text is not present on the page",
-                    landingPage.succesfullyPresent(expectedText));
+                    landingPage.textPresent(expectedText));
+    }
+
+    @When(value = "I enter the bad username {string}")
+    public void iEnterBadUsername(String username) {
+        landingPage.enterUsername(username);
+    }
+
+    @And(value = "Verify error message text is {string}")
+    public void expectedErrorText(String expectedText) {
+        assertTrue("The error text is not present on the page",
+                    landingPage.textPresent(expectedText));
+    }
+
+    @And(value = "I enter the bad password {string}")
+    public void enterBadPassword(String password) {
+        landingPage.enterPassword(password);
     }
 }
