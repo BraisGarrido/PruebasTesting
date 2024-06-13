@@ -18,4 +18,3 @@ public class TestRunner{
         BasePage.closeBrowser();
     }
 }
-
