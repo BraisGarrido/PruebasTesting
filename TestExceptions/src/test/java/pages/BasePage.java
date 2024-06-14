@@ -16,7 +16,7 @@ import java.util.List;
 public class BasePage {
     
     protected static WebDriver driver;
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
 
     static {
         WebDriverManager.chromedriver().setup();
@@ -60,5 +60,14 @@ public class BasePage {
         List<WebElement> dropdownOptions = dropdown.getOptions();
 
         return dropdownOptions.size();
+    }
+
+    public boolean textPresent(String text) {
+        return driver.getPageSource().contains(text);
+    }
+
+    public int countRows(String rowLocator) {
+        List<WebElement> rows = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(rowLocator)));
+        return rows.size();
     }
 }

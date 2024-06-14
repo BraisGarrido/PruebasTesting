@@ -1,10 +1,10 @@
 Feature: Test exceptions
     Control and know the exceptions that cucumber generates
 
-    Scenario: NoSuchElementException
+    Scenario: Fail_NoSuchElementException
         Given Open page
-    #     When Click add button
-    #     Then Verify row 2 input field is displayed
+        When Click add button
+        Then Verify row 2 input field is displayed
 
     # Scenario: ElementNotInteractableException
     #     Given Open page
