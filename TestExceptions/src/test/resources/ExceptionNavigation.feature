@@ -6,10 +6,9 @@ Feature: Test exceptions
         When Click add button
         Then Verify row 2 input field is displayed
 
-    # Scenario: ElementNotInteractableException
-    #     Given Open page
-    #     When Click add button
-    #     And Wait for second row to load
+    Scenario: ElementNotInteractableException
+        Given Open page
+        When Click add button
     #     Then Type text into the second input field
     #     When Push save button using locator By.name("Save")
     #     Then Verify text saved

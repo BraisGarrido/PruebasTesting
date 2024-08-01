@@ -1,29 +1,28 @@
 package pages;
 
+import java.time.Duration;
+import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-import java.time.Duration;
-import java.util.List;
-
 public class BasePage {
     
     protected static WebDriver driver;
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(6));
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
     static {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        WebDriverManager.edgedriver().setup();
+        driver = new EdgeDriver();
     }
 
-    public BasePage(WebDriver driver) {
+    public BasePage (WebDriver driver) {
         BasePage.driver = driver;
     }
 
@@ -35,7 +34,7 @@ public class BasePage {
         driver.quit();
     }
 
-    private WebElement Find(String locator) {
+    public WebElement Find(String locator) {
         return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(locator)));
     }
 
@@ -48,9 +47,13 @@ public class BasePage {
         Find(locator).sendKeys(keysToSend);
     }
 
+    public void selectFromDropdownByValue(String locator, String value) {
+        Select dropdown = new Select(Find(locator));
+        dropdown.selectByValue(value);
+    }
+
     public void selectFromDropdownByIndex(String locator, Integer index) {
         Select dropdown = new Select(Find(locator));
-
         dropdown.selectByIndex(index);
     }
 
@@ -62,12 +65,11 @@ public class BasePage {
         return dropdownOptions.size();
     }
 
-    public boolean textPresent(String text) {
-        return driver.getPageSource().contains(text);
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
     }
 
-    public int countRows(String rowLocator) {
-        List<WebElement> rows = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(rowLocator)));
-        return rows.size();
+    public boolean textPresent(String text) {
+        return driver.getPageSource().contains(text);
     }
 }
