@@ -8,45 +8,50 @@ import pages.HomePage;
 public class SauceSteps {
     HomePage homePage = new HomePage();
 
-    @Given("Open page")
+    @Given("Abrir web")
     public void openPage() {
         homePage.navigateToSauce();
     }
 
-    @When("Enter username {string}")
+    @When("Introducir usuario {string}")
     public void enterUsername(String username) {
         homePage.enterUsername(username);
     }
 
-    @And("Enter password {string}")
+    @And("Introducir contrasena {string}")
     public void enterPassword(String password) {
         homePage.enterPassword(password);
     }
 
-    @And("Push login button")
+    @And("Pulsar boton login")
     public void pushLoginButton() {
         homePage.clickLogin();
     }
 
-    @Then("Verify new page URL contains {string}")
+    @Then("Verificar link nueva ventana {string}")
     public void verifyNewPageUrl(String expectedUrl) {
         String currentUrl = homePage.getCurrentUrl();
-        assertTrue("The current URL does not contain the expected url",
+        assertTrue("La URL actual no es la deseada",
                     currentUrl.contains(expectedUrl));
     }
 
-    @When("Enter bad username {string}")
+    @When("Introducir mal usuario {string}")
     public void enterBadUsername(String username) {
         homePage.enterUsername(username);
     }
 
-    @Then("Verify error message text is {string}")
+    @Then("Verificar mensaje de error {string}")
     public void verifyErrorMessageText(String text) {
         homePage.textPresent(text);
     }
 
-    @And("Enter bad password {string}")
+    @And("Introducir mal contrasena {string}")
     public void enterBadPassword(String password) {
         homePage.enterPassword(password);
+    }
+
+    @When("Usuario agrega un producto al carrito")
+    public void addToCart() {
+        homePage.clickCart();
     }
 }

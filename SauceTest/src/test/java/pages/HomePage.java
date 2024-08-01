@@ -5,6 +5,8 @@ public class HomePage extends BasePage{
     private String userLink = "//input[@id='user-name']";
     private String passLink = "//input[@id='password']";
     private String loginLink = "//input[@id='login-button']";
+    private String cartLink = "//button[@id='add-to-cart-sauce-labs-backpack']";
+    private String cartBadge = "//span[@class='shopping_cart_badge']";
 
     public HomePage() {
         super(driver);
@@ -28,5 +30,9 @@ public class HomePage extends BasePage{
 
     public void isTextPresent(String text) {
         textPresent(text);
+    }
+
+    public void clickCart() {
+        clickElement(cartLink);
     }
 }

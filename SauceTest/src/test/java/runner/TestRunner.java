@@ -15,6 +15,6 @@ import pages.BasePage;
 public class TestRunner {
     @AfterClass
     public static void cleanBrowser() {
-        BasePage.closeBrowser();
+        //BasePage.closeBrowser();
     }
 }
