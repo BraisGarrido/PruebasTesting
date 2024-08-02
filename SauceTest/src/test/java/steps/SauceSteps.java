@@ -1,57 +1,66 @@
 package steps;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import io.cucumber.java.en.*;
 import pages.HomePage;
+import pages.LoginPage;
 
 public class SauceSteps {
+    LoginPage loginPage = new LoginPage();
     HomePage homePage = new HomePage();
 
     @Given("Abrir web")
     public void openPage() {
-        homePage.navigateToSauce();
+        loginPage.navigateToSauce();
     }
 
     @When("Introducir usuario {string}")
     public void enterUsername(String username) {
-        homePage.enterUsername(username);
+        loginPage.enterUsername(username);
     }
 
     @And("Introducir contrasena {string}")
     public void enterPassword(String password) {
-        homePage.enterPassword(password);
+        loginPage.enterPassword(password);
     }
 
     @And("Pulsar boton login")
     public void pushLoginButton() {
-        homePage.clickLogin();
+        loginPage.clickLogin();
     }
 
     @Then("Verificar link nueva ventana {string}")
     public void verifyNewPageUrl(String expectedUrl) {
-        String currentUrl = homePage.getCurrentUrl();
+        String currentUrl = loginPage.getCurrentUrl();
         assertTrue("La URL actual no es la deseada",
                     currentUrl.contains(expectedUrl));
     }
 
     @When("Introducir mal usuario {string}")
     public void enterBadUsername(String username) {
-        homePage.enterUsername(username);
+        loginPage.enterUsername(username);
     }
 
     @Then("Verificar mensaje de error {string}")
     public void verifyErrorMessageText(String text) {
-        homePage.textPresent(text);
+        loginPage.textPresent(text);
     }
 
     @And("Introducir mal contrasena {string}")
     public void enterBadPassword(String password) {
-        homePage.enterPassword(password);
+        loginPage.enterPassword(password);
     }
 
     @When("Usuario agrega un producto al carrito")
     public void addToCart() {
-        homePage.clickCart();
+        homePage.clickAddToCart();
+    }
+
+    @Then("Carrito aparece texto {string}")
+    public void showProduct(String cartBadge) {
+        String actualBadge = homePage.getCartBadge();
+        assertEquals(cartBadge, actualBadge);
     }
 }

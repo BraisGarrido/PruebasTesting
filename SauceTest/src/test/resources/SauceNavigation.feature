@@ -1,4 +1,4 @@
-Feature: Funcionalidad de login
+Feature: Funcionalidad de saucedemo
 
     Scenario Outline: Login test positivo
         Given Abrir web
@@ -54,3 +54,61 @@ Feature: Funcionalidad de login
         Examples:
             | usuario       | contrasena   | texto |
             | standard_user | secret_sauce |   1   |
+
+    # Scenario: Agregar multiples productos al carrito
+    #     Given Iniciar sesion
+    #     When El usuario agrega varios productos al carrito
+    #     Then El carrito mustra el numero correco de productos
+    
+    # Scenario: Remover un producto de un carrito
+    #     Given El usuario tiene un producto en el carrito
+    #     When El usuario elimina todos los productos del carrito
+    #     Then El carrito esta vacio
+
+    # Scenario: Remover todos los productos de un carrito
+    #     Given El usuario tiene varios productos en el carrito
+    #     When El usuario elimina todos los productos del carrito
+    #     Then El carrito esta vacio
+    
+    # Scenario: Ordenar productos por precio de menor a mayor
+    #     Given Iniciar sesion
+    #     When El usuario ordena los productos por precio de menor a mayor
+    #     Then Los productos estan ordenador adecuadamente
+
+    # Scenario: Ordenador los productos de la A a la Z
+    #     Given Iniciar sesion
+    #     When Ordenador los productos de la A a la Z
+    #     Then Los productos estan ordenados correctamente
+
+    # Scenario: Completar el proceso de checkout exitosamente
+    #     Given El usuario tiene productos en el carrito
+    #     When El usuario comienza el proceso de checkout
+    #     And Ingresa la informacion requerida
+    #     And Completa la compra
+    #     Then Recibe un mensaje de confimacion
+    
+    # Scenario: Completar checkout sin rellenar los campos
+    #     Given El usuario tiene productos en el carrito
+    #     When El usuario inicia el proceso de checkout
+    #     And No ingresa todos los campos
+    #     Then Aparece mensaje de error
+    
+    # Scenario: Validar los precios del carrito son correctos
+    #     Given El usuario agrega productos en el carrito
+    #     When Visualizar el carrito
+    #     Then La suma de los productos es correcta
+
+    # Scenario: Verificar todas las imagenes tienen texto alternativo
+    #     Given Iniciar sesion
+    #     When Visualizar lista de productos
+    #     Then Cada imagen tiene un atributo alt con texto descriptivo
+    
+    # Scenario: Pagina de detalles de un producto
+    #     Given Iniciar sesion
+    #     When Hacer click en un producto
+    #     Then Redirigido a pagina de detalles
+    
+    # Scenario: Cerrar sesion correctamente
+    #     Given Iniciar sesion
+    #     When Cerrar sesion desde menu
+    #     Then Redireccion pagina de login
