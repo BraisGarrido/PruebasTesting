@@ -2,7 +2,6 @@ package steps;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
 import io.cucumber.java.en.*;
 import pages.HomePage;
 import pages.LoginPage;
@@ -55,10 +54,10 @@ public class SauceSteps {
 
     @When("Usuario agrega un producto al carrito")
     public void addToCart() {
-        homePage.clickAddToCart();
+        homePage.clickSauceBack();
     }
 
-    @Then("Carrito aparece texto {string}")
+    @Then("Muestra el {string} correcto de productos")
     public void showProduct(String cartBadge) {
         String actualBadge = homePage.getCartBadge();
         assertEquals(cartBadge, actualBadge);

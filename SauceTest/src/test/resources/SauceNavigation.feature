@@ -49,16 +49,11 @@ Feature: Funcionalidad de saucedemo
         And Introducir contrasena "<contrasena>"
         And Pulsar boton login
         When Usuario agrega un producto al carrito
-        Then Carrito aparece texto "<texto>"
+        Then Muestra el "<numero>" correcto de productos
 
         Examples:
-            | usuario       | contrasena   | texto |
+            | usuario       | contrasena   | numero |
             | standard_user | secret_sauce |   1   |
-
-    # Scenario: Agregar multiples productos al carrito
-    #     Given Iniciar sesion
-    #     When El usuario agrega varios productos al carrito
-    #     Then El carrito mustra el numero correco de productos
     
     # Scenario: Remover un producto de un carrito
     #     Given El usuario tiene un producto en el carrito
